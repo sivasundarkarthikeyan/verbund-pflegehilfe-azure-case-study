@@ -1,0 +1,76 @@
+{
+	"name": "AzureMySql_CompanyLeads",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Azure_MySQL_VP_Leads",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureMySqlTable",
+		"schema": [
+			{
+				"name": "Id",
+				"type": "varchar",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "State",
+				"type": "int",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "CreatedDateUtc",
+				"type": "timestamp",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "CancellationRequestDateUtc",
+				"type": "timestamp",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "CancellationDateUtc",
+				"type": "timestamp",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "CancellationRejectionDateUtc",
+				"type": "timestamp",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "UndoCancellationDateUtc",
+				"type": "timestamp",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "CanceledEmployee",
+				"type": "varchar",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "SoldEmployee",
+				"type": "varchar",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "UpdatedDateUtc",
+				"type": "timestamp",
+				"precision": 0,
+				"scale": 0
+			}
+		],
+		"typeProperties": {
+			"tableName": "companyleads"
+		}
+	}
+}
