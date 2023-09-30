@@ -1,0 +1,18 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "etl-vp-df"
+		},
+		"Azure_MySQL_VP_Leads_connectionString": {
+			"value": ""
+		},
+		"Snowflake_VP_Leads_connectionString": {
+			"value": ""
+		},
+		"AzureBlobStorage_VP_Leads_sasUri": {
+			"value": ""
+		}
+	}
+}
