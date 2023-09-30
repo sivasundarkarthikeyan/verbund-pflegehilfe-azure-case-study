@@ -1,0 +1,24 @@
+{
+	"name": "30_Minute_Trigger",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "ETL_SQL_Snowflake",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Minute",
+				"interval": 30,
+				"startTime": "2023-09-30T19:48:00",
+				"timeZone": "Romance Standard Time"
+			}
+		}
+	}
+}

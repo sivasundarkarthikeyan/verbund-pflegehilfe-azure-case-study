@@ -21,6 +21,7 @@
 					},
 					"sink": {
 						"type": "SnowflakeSink",
+						"preCopyScript": "DELETE FROM COMPANYLEADS WHERE 1=1;",
 						"importSettings": {
 							"type": "SnowflakeImportCopyCommand"
 						}
