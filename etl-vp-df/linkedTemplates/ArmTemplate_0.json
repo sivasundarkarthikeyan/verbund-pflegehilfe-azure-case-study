@@ -250,6 +250,7 @@
 							},
 							"sink": {
 								"type": "SnowflakeSink",
+								"preCopyScript": "DELETE FROM COMPANYLEADS WHERE 1=1;",
 								"importSettings": {
 									"type": "SnowflakeImportCopyCommand"
 								}
@@ -287,6 +288,36 @@
 				"[concat(variables('factoryId'), '/datasets/AzureMySql_CompanyLeads')]",
 				"[concat(variables('factoryId'), '/datasets/SnowflakeTable_CompanyLeads')]",
 				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage_VP_Leads')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/30_Minute_Trigger')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "ETL_SQL_Snowflake",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Minute",
+						"interval": 30,
+						"startTime": "2023-09-30T19:48:00",
+						"timeZone": "Romance Standard Time"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/ETL_SQL_Snowflake')]"
 			]
 		}
 	]
