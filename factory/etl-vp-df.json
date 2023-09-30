@@ -1,0 +1,9 @@
+{
+	"name": "etl-vp-df",
+	"location": "westeurope",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "3d476f86-665e-42d6-926f-926c70db4708",
+		"tenantId": "fc66cbff-ce3b-4e41-86e4-7a69bb2b53ce"
+	}
+}
