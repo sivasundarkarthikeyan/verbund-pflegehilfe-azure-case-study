@@ -17,10 +17,12 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureMySqlSource",
+						"query": "SELECT * FROM CompanyLeads WHERE 1=0;",
 						"queryTimeout": "02:00:00"
 					},
 					"sink": {
 						"type": "SnowflakeSink",
+						"preCopyScript": "DELETE * FROM COMPANYLEADS WHERE 1=1;",
 						"importSettings": {
 							"type": "SnowflakeImportCopyCommand"
 						}
