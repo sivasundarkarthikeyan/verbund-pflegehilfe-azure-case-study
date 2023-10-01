@@ -60,6 +60,103 @@
 									"referenceName": "AzureBlobStorage_VP_Leads",
 									"type": "LinkedServiceReference"
 								}
+							},
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"name": "Id",
+											"type": "String"
+										},
+										"sink": {
+											"name": "ID",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "State",
+											"type": "Int32"
+										},
+										"sink": {
+											"name": "STATE",
+											"type": "Int64"
+										}
+									},
+									{
+										"source": {
+											"name": "CreatedDateUtc"
+										},
+										"sink": {
+											"name": "CREATED_DATE_UTC",
+											"type": "DateTime"
+										}
+									},
+									{
+										"source": {
+											"name": "CancellationRequestDateUtc"
+										},
+										"sink": {
+											"name": "CANCELLATION_REQUEST_DATE_UTC",
+											"type": "DateTime"
+										}
+									},
+									{
+										"source": {
+											"name": "CancellationDateUtc"
+										},
+										"sink": {
+											"name": "CANCELLATION_DATE_UTC",
+											"type": "DateTime"
+										}
+									},
+									{
+										"source": {
+											"name": "CancellationRejectionDateUtc"
+										},
+										"sink": {
+											"name": "CANCELLATION_REJECTION_DATE_UTC",
+											"type": "DateTime"
+										}
+									},
+									{
+										"source": {
+											"name": "UndoCancellationDateUtc"
+										},
+										"sink": {
+											"name": "UNDO_CANCELLATION_DATE_UTC",
+											"type": "DateTime"
+										}
+									},
+									{
+										"source": {
+											"name": "CanceledEmployee"
+										},
+										"sink": {
+											"name": "CANCELED_EMPLOYEE",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "SoldEmployee"
+										},
+										"sink": {
+											"name": "SOLD_EMPLOYEE",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "UpdatedDateUtc"
+										},
+										"sink": {
+											"name": "UPDATED_DATE_UTC",
+											"type": "DateTime"
+										}
+									}
+								]
 							}
 						},
 						"inputs": [
@@ -255,6 +352,7 @@
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
 			"properties": {
+				"description": "Linked Service to connect with Azure Blob Storage",
 				"annotations": [],
 				"type": "AzureBlobStorage",
 				"typeProperties": {
