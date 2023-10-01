@@ -1,0 +1,4 @@
+myenv
+settings.json
+*.ipynb*
+.vscode
