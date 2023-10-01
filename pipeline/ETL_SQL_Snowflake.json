@@ -17,10 +17,11 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureMySqlSource",
-						"queryTimeout": "00:10:00"
+						"queryTimeout": "02:00:00"
 					},
 					"sink": {
 						"type": "SnowflakeSink",
+						"preCopyScript": "DELETE FROM COMPANYLEADS WHERE 1=1;",
 						"importSettings": {
 							"type": "SnowflakeImportCopyCommand"
 						}
@@ -31,6 +32,103 @@
 							"referenceName": "AzureBlobStorage_VP_Leads",
 							"type": "LinkedServiceReference"
 						}
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Id",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "State",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "STATE",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "CreatedDateUtc"
+								},
+								"sink": {
+									"name": "CREATED_DATE_UTC",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "CancellationRequestDateUtc"
+								},
+								"sink": {
+									"name": "CANCELLATION_REQUEST_DATE_UTC",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "CancellationDateUtc"
+								},
+								"sink": {
+									"name": "CANCELLATION_DATE_UTC",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "CancellationRejectionDateUtc"
+								},
+								"sink": {
+									"name": "CANCELLATION_REJECTION_DATE_UTC",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "UndoCancellationDateUtc"
+								},
+								"sink": {
+									"name": "UNDO_CANCELLATION_DATE_UTC",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "CanceledEmployee"
+								},
+								"sink": {
+									"name": "CANCELED_EMPLOYEE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SoldEmployee"
+								},
+								"sink": {
+									"name": "SOLD_EMPLOYEE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "UpdatedDateUtc"
+								},
+								"sink": {
+									"name": "UPDATED_DATE_UTC",
+									"type": "DateTime"
+								}
+							}
+						]
 					}
 				},
 				"inputs": [
@@ -45,37 +143,6 @@
 						"type": "DatasetReference"
 					}
 				]
-			},
-			{
-				"name": "Email_on_Activity_Failure",
-				"description": "Triggers the connected Logic App to send a notification email on pipeline failure",
-				"type": "WebActivity",
-				"dependsOn": [
-					{
-						"activity": "SQL_to_Snowflake",
-						"dependencyConditions": [
-							"Failed"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "0.00:10:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"url": "https://vp-email-sender.azurewebsites.net:443/api/SendEmailFromPipeline/triggers/When_a_HTTP_request_is_received/invoke?api-version=2022-05-01&sp=%2Ftriggers%2FWhen_a_HTTP_request_is_received%2Frun&sv=1.0&sig=v8hb7G5gmysaf1_zSlfB_I5keRcQ23bSXf4rJ5m0WvQ",
-					"method": "POST",
-					"body": {
-						"message": "This is a custom dynamic message from your pipeline with run ID @{pipeline().RunId}.",
-						"dataFactoryName": "@{pipeline().DataFactory}",
-						"pipelineName": "@{pipeline().Pipeline}",
-						"receiver": "@{pipeline().parameters.receiver}"
-					}
-				}
 			}
 		],
 		"annotations": []
