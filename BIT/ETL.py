@@ -116,5 +116,8 @@ class ETL:
         runs them sequentially
         """
         self.connect_with_snowflake()
+        print("Established connection with Snowflake")
         self.extract_from_snowflake()
+        print("Extracted data from Snowflake")
         self.transform_and_load_into_snowflake()
+        print("Transformed the data and then loaded into Snowflake")

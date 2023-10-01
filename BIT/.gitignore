@@ -1,4 +1,6 @@
-myenv
+myenv*
 settings.json
 *.ipynb*
 .vscode
+__pycache__
+*.pyc
