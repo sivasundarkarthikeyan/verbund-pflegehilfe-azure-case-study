@@ -1,6 +1,7 @@
 {
 	"name": "30_Minute_Trigger",
 	"properties": {
+		"description": "Trigger to rerun the pipeline every 30 minutes",
 		"annotations": [],
 		"runtimeState": "Started",
 		"pipelines": [
