@@ -4,6 +4,7 @@
 		"activities": [
 			{
 				"name": "SQL_to_Snowflake",
+				"description": "Copy activaty from MySQL table to Snowflake table",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -167,12 +168,7 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": [
-					{
-						"name": "receiver",
-						"value": "sivasundarkarthikeyan@gmail.com"
-					}
-				],
+				"userProperties": [],
 				"typeProperties": {
 					"url": "https://vp-email-sender.azurewebsites.net:443/api/SendEmailFromPipeline/triggers/When_a_HTTP_request_is_received/invoke?api-version=2022-05-01&sp=%2Ftriggers%2FWhen_a_HTTP_request_is_received%2Frun&sv=1.0&sig=v8hb7G5gmysaf1_zSlfB_I5keRcQ23bSXf4rJ5m0WvQ",
 					"method": "POST",
@@ -180,7 +176,7 @@
 						"message": "This is a custom dynamic message from your pipeline with run ID @{pipeline().RunId}.",
 						"dataFactoryName": "@{pipeline().DataFactory}",
 						"pipelineName": "@{pipeline().Pipeline}",
-						"receiver": "@{pipeline().parameters.receiver}"
+						"receiver": "sivasundarkarthikeyan@gmail.com"
 					}
 				}
 			}
