@@ -432,7 +432,7 @@
 			"properties": {
 				"description": "Trigger to rerun the pipeline every 30 minutes",
 				"annotations": [],
-				"runtimeState": "Started",
+				"runtimeState": "Stopped",
 				"pipelines": [
 					{
 						"pipelineReference": {
